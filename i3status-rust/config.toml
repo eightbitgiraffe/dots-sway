@@ -1,0 +1,28 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "catppuccin.toml"
+[theme.overrides]
+idle_bg = "#22222270"
+separator = "<span font-family='Terminus' size='11500'></span>"
+
+[icons]
+icons = "material-nf"
+
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "disk_space"
+
+[[block]]
+block = "battery"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%I:%M %p') "

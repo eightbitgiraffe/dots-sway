@@ -1,0 +1,39 @@
+# of course, catppuccin
+theme = "catppuccin_mocha"
+
+# random stuff i saw that i wanna set up
+[editor]
+auto-save = true
+auto-info = false
+
+# it just looks cool imo
+[editor.statusline]
+center = ["mode", "spinner"]
+left = ["file-name", "file-modification-indicator"]
+right = ["position"]
+mode.normal = ""
+mode.insert = "󰏫 "
+mode.select = "󰗧"
+
+# why wont it work?
+[editor.indent-guides]
+render = true
+
+# gotta get the cool cursors!
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+# change keybindings to what's comfortable for me
+[keys.normal]
+# save/quit commands
+C-s = ":write"
+C-x = ":x"
+C-c = ":quit"
+C-S-c = ":quit!"
+
+# misc
+a = ["move_char_right", "insert_mode"]
+C-3 = "toggle_comments"
+C-f = "file_picker_in_current_directory"

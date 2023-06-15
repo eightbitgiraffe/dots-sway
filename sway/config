@@ -1,0 +1,240 @@
+# Catppuccin Color Variables
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# direction keys
+set $up i
+set $down k
+set $left j
+set $right l
+# Your preferred terminal emulator
+set $term kitty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu wofi --show drun --show-icons
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+output * bg ~/wallpaper.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+#
+# Example configuration:
+#
+input "1452:601:bcm5974" {
+    dwt disabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start stuff
+    bindsym $mod+t exec kitty
+    bindsym $mod+f exec MOZ_ENABLE_WAYLAND=1 firefox
+    bindsym $mod+d exec /usr/bin/discord-canary --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym $mod+g exec thunar
+    bindsym $mod+s exec steam
+    bindsym $mod+z exec grim -g "$(slurp)" ~/Screenshots/$(date +'%s_screenshot.png')
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+space exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+m reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+m exec wlogout -p layer-shell
+
+    # The cool function keys!
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+    bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+    bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl -d smc::kbd_backlight set +5%
+    bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl -d smc::kbd_backlight set 5%-
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+shift+$left focus left
+    bindsym $mod+shift+$down focus down
+    bindsym $mod+shift+$up focus up
+    bindsym $mod+shift+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+shift+Left focus left
+    bindsym $mod+shift+Down focus down
+    bindsym $mod+shift+Up focus up
+    bindsym $mod+shift+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+$left move left
+    bindsym $mod+$down move down
+    bindsym $mod+$up move up
+    bindsym $mod+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Left move left
+    bindsym $mod+Down move down
+    bindsym $mod+Up move up
+    bindsym $mod+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+h splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+p floating toggle
+
+    # Make the current focus fullscreen
+    bindsym $mod+shift+f fullscreen
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+
+default_border pixel 1
+default_floating_border none
+font pango:monospace 0
+titlebar_padding 1
+titlebar_border_thickness 0
+
+gaps inner 15
+gaps outer 20
+
+exec dunst
+
+# client.focused 
+
+# SwayFX Config
+blur enable
+blur_xray disable
+blur_passes 1
+blur_radius 10
+
+corner_radius 15
+
+default_dim_inactive 0.1
+
+scratchpad_minimize enable
+
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 877 450, sticky enable
+
+
+# Colors                 title     bg    text   indicator  border
+client.focused           $red      $base $text  $pink      $pink
+client.focused_inactive  $mauve    $base $text  $red       $red
+client.unfocused         $mauve    $base $text  $red       $red
+client.urgent            $peach    $base $peach $overlay0  $mauve
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+bar {
+    status_command i3status-rs
+    position top
+    font pango:Ubuntu Nerd Font 10
+
+    colors {
+        background 00000000
+        statusline $text
+
+        focused_workspace $pink $mantle $text
+        active_workspace $red $mantle $text
+        inactive_workspace $red $mantle $text
+        urgent_workspace $peach $mantle $text
+    }
+    workspace_buttons no
+
+}
+
+include @sysconfdir@/sway/config.d/*
