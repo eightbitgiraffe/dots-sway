@@ -1,4 +1,6 @@
-my dotfiles but on sway!!
+my dotfiles but on swayfx!!
+
+configs for `swayfx`, `swaybar`, `kitty`, `i3status-rust`, `helix`, and `dunst`.
 
 Unixporn:
 ![Screenshot of `pfetch` and `cbonsai`, showing off how this system looks when made to look like a r/unixporn post.](pretty.png)
