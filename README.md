@@ -7,3 +7,4 @@ Unixporn:
 
 Actually being used:
 ![Screenshot of Firefox, `cmatrix`, and `helix`, showcasing how the system would look if it was actually in use.](inuse.png)
+^ that image is slightly out of date, instead the bar doesn't take up so much unnecesary room like it does at the top.
