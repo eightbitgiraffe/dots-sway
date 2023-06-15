@@ -235,6 +235,7 @@ bar {
     }
     workspace_buttons no
 
+    mode overlay
 }
 
 include @sysconfdir@/sway/config.d/*
