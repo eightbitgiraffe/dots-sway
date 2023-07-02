@@ -65,6 +65,9 @@ input "1452:601:bcm5974" {
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+exec swayidle -w \
+    timeout 300 "swaylock --screenshots --clock --indicator --datestr '' --timestr '%I:%M %p' --effect-blur 10x2 --fade-in 0.5 --ring-color 1e1e2e --key-hl-color f38ba8 --inside-color 181825dd --text-color f38ba8 --font Ubuntu Nerd Font"
+
 ### Key bindings
 #
 # Basics:
@@ -72,8 +75,7 @@ input "1452:601:bcm5974" {
     # Start stuff
     bindsym $mod+t exec kitty
     bindsym $mod+f exec MOZ_ENABLE_WAYLAND=1 firefox
-    bindsym $mod+d exec /usr/bin/discord-canary --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+g exec thunar
+    bindsym $mod+g exec nemo
     bindsym $mod+s exec steam
     bindsym $mod+z exec grim -g "$(slurp)" ~/Screenshots/$(date +'%s_screenshot.png')
 
@@ -198,7 +200,7 @@ exec dunst
 # SwayFX Config
 blur enable
 blur_xray disable
-blur_passes 1
+blur_passes 2
 blur_radius 10
 
 corner_radius 15
