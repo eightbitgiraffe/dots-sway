@@ -39,7 +39,8 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show drun --show-icons
+# set $menu wofi --show drun --show-icons
+set $menu fuzzel -f "Ubuntu Nerd Font" -w 35 -x 20 -T "kitty -e" -b 1e1e2ef0 -t cdd6f4ff -m f38ba8ff -s 313244f0 -S cdd6f4ff -M f38ba8ff -B 1 -r 15 -C f38ba8ff 
 
 ### Output configuration
 #
@@ -74,7 +75,7 @@ exec swayidle -w \
 #
     # Start stuff
     bindsym $mod+t exec kitty
-    bindsym $mod+f exec MOZ_ENABLE_WAYLAND=1 firefox
+    bindsym $mod+f exec qutebrowser
     bindsym $mod+g exec nemo
     bindsym $mod+s exec steam
     bindsym $mod+z exec grim -g "$(slurp)" ~/Screenshots/$(date +'%s_screenshot.png')
@@ -237,7 +238,7 @@ bar {
     }
     workspace_buttons no
 
-    mode overlay
+    mode hide
 }
 
 include @sysconfdir@/sway/config.d/*
