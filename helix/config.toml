@@ -1,5 +1,5 @@
 # of course, catppuccin
-theme = "catppuccin_mocha"
+theme = "nord"
 
 # random stuff i saw that i wanna set up
 [editor]

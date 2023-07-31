@@ -1,30 +1,3 @@
-# Catppuccin Color Variables
-set $rosewater #f5e0dc
-set $flamingo  #f2cdcd
-set $pink      #f5c2e7
-set $mauve     #cba6f7
-set $red       #f38ba8
-set $maroon    #eba0ac
-set $peach     #fab387
-set $green     #a6e3a1
-set $teal      #94e2d5
-set $sky       #89dceb
-set $sapphire  #74c7ec
-set $blue      #89b4fa
-set $lavender  #b4befe
-set $text      #cdd6f4
-set $subtext1  #bac2de
-set $subtext0  #a6adc8
-set $overlay2  #9399b2
-set $overlay1  #7f849c
-set $overlay0  #6c7086
-set $surface2  #585b70
-set $surface1  #45475a
-set $surface0  #313244
-set $base      #1e1e2e
-set $mantle    #181825
-set $crust     #11111b
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -66,18 +39,14 @@ input "1452:601:bcm5974" {
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-exec swayidle -w \
-    timeout 300 "swaylock --screenshots --clock --indicator --datestr '' --timestr '%I:%M %p' --effect-blur 10x2 --fade-in 0.5 --ring-color 1e1e2e --key-hl-color f38ba8 --inside-color 181825dd --text-color f38ba8 --font Ubuntu Nerd Font"
-
 ### Key bindings
 #
 # Basics:
 #
     # Start stuff
     bindsym $mod+t exec kitty
-    bindsym $mod+f exec qutebrowser
+    bindsym $mod+f exec GDK_BACKEND=wayland MOZ_ENABLE_WAYLAND=1 librewolf
     bindsym $mod+g exec nemo
-    bindsym $mod+s exec steam
     bindsym $mod+z exec grim -g "$(slurp)" ~/Screenshots/$(date +'%s_screenshot.png')
 
     # Kill focused window
@@ -95,9 +64,6 @@ exec swayidle -w \
 
     # Reload the configuration file
     bindsym $mod+m reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+m exec wlogout -p layer-shell
 
     # The cool function keys!
     bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -191,8 +157,8 @@ font pango:monospace 0
 titlebar_padding 1
 titlebar_border_thickness 0
 
-gaps inner 15
-gaps outer 20
+gaps inner 10
+gaps outer 10
 
 exec dunst
 
@@ -204,41 +170,22 @@ blur_xray disable
 blur_passes 2
 blur_radius 10
 
-corner_radius 15
+corner_radius 5
 
 default_dim_inactive 0.1
 
 scratchpad_minimize enable
 
-for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+for_window [title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
 
 
-# Colors                 title     bg    text   indicator  border
-client.focused           $red      $base $text  $pink      $pink
-client.focused_inactive  $mauve    $base $text  $red       $red
-client.unfocused         $mauve    $base $text  $red       $red
-client.urgent            $peach    $base $peach $overlay0  $mauve
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
-
-bar {
-    status_command i3status-rs
-    position top
-    font pango:Ubuntu Nerd Font 10
-
-    colors {
-        background 00000000
-        statusline $text
-
-        focused_workspace $pink $mantle $text
-        active_workspace $red $mantle $text
-        inactive_workspace $red $mantle $text
-        urgent_workspace $peach $mantle $text
-    }
-    workspace_buttons no
-
-    mode hide
-}
+# Colors                 title     bg      text     indicator  border
+client.focused           #000000   #000000 #000000  #81a1c1    #81a1c1
+client.focused_inactive  #000000   #000000 #000000  #5e81ac    #5e81ac
+client.unfocused         #000000   #000000 #000000  #5e81ac    #5e81ac
+client.urgent            #000000   #000000 #000000  #000000    #8fbcbb
+client.placeholder       #000000   #000000 #000000  #5e81ac    #5e81ac
+client.background        #000000
 
 include @sysconfdir@/sway/config.d/*
